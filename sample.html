@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <title>UA Parser Test</title>
+    <script type="text/javascript" src="uaparser.js"></script>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+
+        var ua = parseUserAgent();
+
+        ua['supported'] = false;
+        switch (ua.browser.toLowerCase()) {
+            case "chrome":
+                ua.supported = (parseInt(ua.version) >= 55);
+            break;
+            case "firefox":
+                ua.supported = (parseInt(ua.version) >= 50);
+            break;
+            case "edge":
+                ua.supported = true;
+            break;
+            case "safari":
+                ua.supported = (parseInt(ua.version) >= 10);
+            break;
+            case "opera":
+                ua.supported = false;
+            break;
+        }
+        
+        document.writeln ('User Agent Info: '+JSON.stringify(ua));
+
+    </script>
+
+</body>
+
+</html>
