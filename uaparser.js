@@ -70,7 +70,7 @@ function parseUserAgent() {
         engine[k] = engine[k].trim();
     }
     
-    var analysis = { "identified":false, 'browser':'', 'version':'', 'userAgent':ua };
+    var analysis = { "identified":false, 'browser':'', 'version':'', 'platform':'', 'userAgent':ua };
     if (keylist.length > 0) {
         if (keys['opera']) {
             analysis.browser = "Safari";
@@ -100,6 +100,10 @@ function parseUserAgent() {
             analysis.version = keys[keylist[keylist.length-1]];
             analysis.identified = true;
         }
+    }
+
+    if (platform.length > 0) {
+        analysis.platform = platform[0];
     }
 
     return (analysis);
